@@ -33,14 +33,22 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: "Setup actions"
+        uses: actions/checkout@v1
+      - name: "npm/registry setup"
+        uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@devision1088'
-          key: ${{secrets.GITHUB_TOKEN}}
-      - run: npm ci
-      - run: npm publish
+          scope: "@OWNER"
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "publish package"
+        uses: actions/bin/debug@master
+        run: |
+          npm run test 
+          npm run build
+          echo @OWNER:registry=https://npm.pkg.github.com/ >> .npmrc
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
