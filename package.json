@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/devision1088/unillax/issues"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
-  },
   "homepage": "https://devision1088.com/unillax"
 }
