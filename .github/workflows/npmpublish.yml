@@ -39,6 +39,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@devision1088'
+          key: ${{secrets.GITHUB_TOKEN}}
       - run: npm ci
       - run: npm publish
         env:
