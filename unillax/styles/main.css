@@ -1,0 +1,87 @@
+/* Resets most elements */
+*:not(h1, h2, h3, h4, h5, h6, p, code) {
+    margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sets HTML elements */
+main {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Layout classes */
+.section {
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: 1200px;
+    margin: auto;
+    font-size: 0;
+}
+
+.hero-overlay {
+    max-width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    text-align: center;
+}
+.hero {
+    width: 100%;
+    height: 80%;
+}
+.hero-content {
+	max-width: 800px;
+	margin: 40px;
+	position: absolute;
+}
+.overlay {
+    color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* Column classes */
+.column-2 {
+    width: calc(50% - 40px);
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20px;
+}
+
+/* Content classes */
+.code {
+    width: calc(100%);
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 16px;
+    display: block;
+    background-color: #333;
+    overflow: scroll;
+}
+
+/* Extras */
+.bottom-left {
+    bottom: 0;
+	left: 0;
+}
+.align-right {
+    right: 20px;
+    margin-right: 160px;
+    text-align: right;
+}
+@media screen and (max-width: 800px) {
+    .column-2 {
+        width: 100%;
+    }
+}
