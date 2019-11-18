@@ -1,5 +1,5 @@
 # Unillax
-__Unillax__ is a JavaScript library for websites that adds universal parallax effects to any element. __Unillax__ is able to handle background and foreground effects with any standard HTML elements, making it universal and easy to implament for many projets.
+__Unillax__ is a JavaScript library for websites that adds universal parallax effects to any element. __Unillax__ can handle background and foreground effects with any standard HTML elements, making it universal and easy to implement for many projects.
 
 
 
@@ -24,7 +24,7 @@ __Unillax__ is a JavaScript library for websites that adds universal parallax ef
     + [Bugs](#bugs)
     + [Feature Requests](#feature-requests)
     + [Pull Requests](#pull-requests)
-  * [Licence](#licence)
+  * [License](#license)
 
 
 ## Installing
@@ -32,7 +32,7 @@ __Unillax__ is a JavaScript library for websites that adds universal parallax ef
 * [Node.js v12.8.1](https://nodejs.org/dist/v12.8.1/ "Index of /dist/v12.8.1/") or higher
 * npm v6.10.2 or higher (Comes with [Node.js](https://nodejs.org/ "Node.js"))
 
-Ensure you are running [Node.js v12.8.1](https://nodejs.org/dist/v12.8.1/ "Index of /dist/v12.8.1/") or higher and npm v6.10.2 or higer before installing the package.
+Ensure you are running [Node.js v12.8.1](https://nodejs.org/dist/v12.8.1/ "Index of /dist/v12.8.1/") or higher and npm v6.10.2 or higher before installing the package.
 ```shell
 $ node -v
 $ npm -v
@@ -85,7 +85,7 @@ By default, elements will reach a "centered" position at the top of the page. To
 
 
 ## Local Development
-The following instructions will describe how to install __Unillax__ on your loacal machine for development or contributing. If you wish to only use __Unillax__ in your projects, and not contribute, I would [recomend installing the npm package](#Installing "Installing").
+The following instructions will describe how to install __Unillax__ on your local machine for development or contributing. If you wish to only use __Unillax__ in your projects, and not contribute, I would [recomend installing the npm package](#Installing "Installing").
 ### Cloning the Repository
 Clone the repository onto a local file path and set the current working directory to `unillax`. After this, feel free to make changes
 ```shell
@@ -97,7 +97,7 @@ To develop __Unillax__, we will link the clones npm module to a test HTML projec
 ```shell
 $ npm link
 ```
-Then, set your working directory to the test project you want to test Unillax on. Configure this project to have it's npm module update based on the local clone of __Unillax__.
+Then, set your working directory to the test project you want to test Unillax on. Configure this project to have its npm module update based on the local clone of __Unillax__.
 ```shell
 $ npm link unillax
 ```
@@ -113,5 +113,5 @@ If you have an idea for a feature and would like to put it up for development [c
 To contribute, fork the repository and [create a pull request](https://github.com/devision1088/unillax/compare). When creating a pull request, please describe the changes made and explain the reasons for the changes to help quickly identify when to merge pull requests.
 
 
-## Licence
+## License
 [MIT](https://github.com/devision1088/unillax/blob/master/LICENSE)
