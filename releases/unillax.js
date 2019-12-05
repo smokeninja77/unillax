@@ -1,89 +1,108 @@
-(function () {
+(function () { // Making these variables and stuff not global, that would be bad :(
 
-    // Defines all undefined variables
-    var unillaxContainer, unillaxElement, unillaxScrollHeight, depth, position, topDistance, insideOffset;
+	// Define some global variables that are used everywhere in Unillax
+	var unillaxContainers, unillaxElements;
 
-    // Applies stylesheet to body
-    var styles = document.createElement("style");
-    styles.innerHTML = `.unillax-container{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.unillax-background{width:100%;height:100vh;object-fit:cover;}.unillax-overlay{width:100%;height:100%;position:relative;margin-top:-100vh;}.unillax-cropped{overflow:hidden;}`;
-    document.body.appendChild(styles);
+	// Appends a stylesheet for certain specialty elements
+	function applyStyles() {
 
-    // Updates vaariables with relevant DOM information
-    function updateDOM() {
-        unillaxContainer = document.getElementsByClassName("unillax-container");
-        unillaxElement = document.getElementsByClassName("unillax-element");
-    }
+		// Creates the stylesheet element
+		var styles = document.createElement("style");
 
-    // Updates positions of all elements
-    function updatePositions() {
-        unillaxScrollHeight = window.pageYOffset;
-
-        // Selects and loops through all Unillax containers
-        for (var i = 0; i < unillaxContainer.length; i++) {
-
-            // Updates 'topDistance' based on when the element should reach the center
-            if (unillaxContainer[i].getAttribute("data-unillax-position") === "bottom") {
-                topDistance = window.pageYOffset + unillaxContainer[i].getBoundingClientRect().top + window.innerHeight - unillaxContainer[i].offsetHeight;
-            } else if (unillaxContainer[i].getAttribute("data-unillax-position") === "middle") {
-                topDistance = window.pageYOffset + unillaxContainer[i].getBoundingClientRect().top + (window.innerHeight / 2) - (unillaxContainer[i].offsetHeight / 2);
-            } else {
-                topDistance = window.pageYOffset + unillaxContainer[i].getBoundingClientRect().top;
+		// Sets the values of the stylesheet to make the unillax-background elements work properly
+		styles.innerHTML = `
+            .unillax-container {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                overflow: hidden
             }
-
-            // Sets depth
-            if (unillaxContainer[i].getAttribute("data-unillax-depth")) {
-                depth = unillaxContainer[i].getAttribute("data-unillax-depth");
-            } else {
-                depth = 2;
+            .unillax-background {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
             }
-
-            // Sets the `transform: translateY();` property on all children of the Unillax container
-            for (var j = 0; j < unillaxContainer[i].children.length; j++) {
-                insideOffset = (unillaxScrollHeight / depth) - (topDistance / depth);
-                unillaxContainer[i].children[j].style.transform = "translateY(" + insideOffset + "px)";
+            .unillax-overlay {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin-top: -100vh;
             }
-
-            // Resets any background element position without the changes from `data-unillax-position`
-            for (var z = 0; z < unillaxContainer[i].getElementsByClassName("unillax-background").length; z++) {
-                topDistance = window.pageYOffset + unillaxContainer[i].getBoundingClientRect().top;
-                insideOffset = (unillaxScrollHeight / depth) - (topDistance / depth);
-                unillaxContainer[i].getElementsByClassName("unillax-background")[z].style.transform = "translateY(" + insideOffset + "px)";
+            .unillax-cropped{
+                overflow: hidden;
             }
+		`;
 
-            for (var j = 0; j < unillaxContainer[i].getElementsByClassName("unillax-overlay").length; j++) {
-                unillaxContainer[i].getElementsByClassName("unillax-overlay")[j].classList.add("unillax-element");
-            }
-        }
+		// Adds the stylesheet 
+		document.head.appendChild(styles);
+	}
 
-        // Selects and loops through all Unillax elements
-        for (var i = 0; i < unillaxElement.length; i++) {
-            if (unillaxElement[i].getAttribute("data-unillax-position") === "bottom") {
-                topDistance = window.pageYOffset + unillaxElement[i].getBoundingClientRect().top + window.innerHeight;
-            } else if (unillaxElement[i].getAttribute("data-unillax-position") === "middle") {
-                topDistance = window.pageYOffset + unillaxElement[i].getBoundingClientRect().top - (window.innerHeight / 2) + (unillaxElement[i].offsetHeight / 2);
-            } else {
-                topDistance = window.pageYOffset + unillaxElement[i].getBoundingClientRect().top;
-            }
-            if (unillaxElement[i].getAttribute("data-unillax-depth")) {
-                depth = unillaxElement[i].getAttribute("data-unillax-depth");
-            } else {
-                depth = 2;
-            }
-            insideOffset = (unillaxScrollHeight / depth) - (topDistance / depth);
-            unillaxElement[i].style.transform = "translateY(" + insideOffset + "px)";
-        }
-    }
+	// Updates variables with relevant DOM information
+	function updateDOM() {
+		unillaxContainers = document.getElementsByClassName("unillax-container"), unillaxElements = document.getElementsByClassName("unillax-element");
+	}
 
-    // Initially updates DOM variables
-    updateDOM();
+	// Updates positions of all elements
+	function updatePositions() {
 
-    // Updates 16 times initially for precision
-    for (var i = 0; i < 16; i++) {
-        updatePositions();
-    }
+		// Sets scroll positions
+		var scrollXPosition = window.pageXOffset;
+		var scrollYPosition = window.pageYOffset;
 
-    // Updates position on scroll
-    window.onscroll = function () {
-        updatePositions();
-    }
+		// Sets window dimensions
+		var windowWidth = window.innerWidth;
+		var windowHeight = window.innerHeight;
+
+		// Selects and loops through all Unillax containers
+		for (var i = 0; i < unillaxContainers.length; i++) {
+
+			// Sets current container and children as variables
+			var container = unillaxContainers[i];
+			var children = container.children;
+
+			// Sets a variable for the element's dimensions
+			var elementWidth = container.offsetWidth;
+			var elementHeight = container.offsetHeight;
+
+			// Sets a variable for the element's position from top relative to the viewport
+			var elementOffsetLeft = container.getBoundingClientRect().left;
+			var elementOffsetTop = container.getBoundingClientRect().top;
+
+			// Assign `data-unillax-position-x` to a variable
+			var dataUnillaxPositionX = container.getAttribute("data-unillax-position-x");
+			// Assign `data-unillax-position-y` to a variable
+			var dataUnillaxPositionY = container.getAttribute("data-unillax-position-y");
+
+			// Assign `data-unillax-depth` to a variable
+			var dataUnillaxDepth = container.getAttribute("data-unillax-depth");
+
+			// Sets depth
+			if (dataUnillaxDepth) {
+				var depth = dataUnillaxDepth;
+			} else {
+				var depth = 1;
+			}
+
+			// Calculates final transformations
+			var transformX = scrollXPosition / depth;
+			var transformY = -elementOffsetTop / depth;
+
+			// Transforms children
+			for (var j = 0; j < children.length; j++) {
+				children[j].style.transform = "translate(" + transformX + "px, " + transformY + "px)";
+			}
+
+		}
+		window.requestAnimationFrame(updatePositions);
+	}
+
+	function updateAnimation() {
+		window.requestAnimationFrame(updatePositions);
+	}
+	// Initially updates DOM variables
+	applyStyles();
+	updateDOM();
+
+	window.addEventListener("scroll", updateAnimation);
+
 })();

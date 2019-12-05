@@ -1,9 +1,9 @@
 # Unillax
-__Unillax__ is a JavaScript library for websites that adds universal parallax effects to any element. __Unillax__ can handle background and foreground effects with any standard HTML elements, making it universal and easy to implement for many projects.
 
-
+__Unillax__ is a JavaScript library for websites that adds universal parallax effects to any element. It can handle scroll, mouse, and gyroscope inputs and apply parallax effects on individual elements, containers, and background images, making it universally useful for a variety of projects.
 
 ## Table of Contents
+
 - [Unillax](#unillax)
   * [Table of Contents](#table-of-contents)
   * [Installing](#installing)
