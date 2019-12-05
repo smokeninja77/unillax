@@ -83,7 +83,5 @@
     }
 
     // Updates position on scroll
-    window.onscroll = function () {
-        updatePositions();
-    }
+    window.addEventListener("scroll", updatePositions);
 })();
