@@ -2,6 +2,16 @@
   "name": "unillax",
   "version": "1.1.0",
   "description": "Unillax is a JavaScript library for websites that adds universal parallax effects to any element. Unillax can handle background and foreground effects with any standard HTML elements, making it universal and easy to implement for many projects.",
+  "keywords" [
+    "parallax-javascript-library",
+    "parallax",
+    "parallax-scrolling",
+    "parallax-effect",
+    "parallax-web",
+    "javascript",
+    "javascript-library",
+    "animation"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devision1088/unillax.git"
@@ -15,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/devision1088/unillax/issues"
   },
-  "homepage": "https://devision1088.com/unillax"
+  "homepage": "https://devision1088.com/unillax",
+  "files": [
+    "releases",
+    "LICENSE"
+  ],
+  "engines" {
+    "node": ">=8.0",
+    "npm": ">=5.0"
+  }
 }
