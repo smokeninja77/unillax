@@ -1,6 +1,6 @@
 {
   "name": "unillax",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Unillax is a JavaScript library for websites that adds universal parallax effects to any element. Unillax can handle background and foreground effects with any standard HTML elements, making it universal and easy to implement for many projects.",
   "repository": {
     "type": "git",
