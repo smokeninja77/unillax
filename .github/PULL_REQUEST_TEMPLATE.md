@@ -41,5 +41,5 @@ Provide any other important details below.
 
 :question:
 
-[1]: https://github.com/devision1088/unillax/pulls
-[2]: https://github.com/devision1088/unillax/blob/master/.github/CONTRIBUTING.md#code-style
+[1]: https://github.com/devision1088/github-template/pulls
+[2]: https://github.com/devision1088/github-template/blob/master/.github/CONTRIBUTING.md#code-style

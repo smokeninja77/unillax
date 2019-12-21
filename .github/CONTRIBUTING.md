@@ -60,6 +60,6 @@ Please follow the coding style conventions detailed below:
 {guidelines}
 
 [1]: mailto:contact@devision1088.com
-[2]: https://github.com/devision1088/unillax/issues/new
-[3]: https://github.com/devision1088/unillax/compare
-[4]: https://github.com/devision1088/unillax/pulls
+[2]: https://github.com/devision1088/github-template/issues/new
+[3]: https://github.com/devision1088/github-template/compare
+[4]: https://github.com/devision1088/github-template/pulls
