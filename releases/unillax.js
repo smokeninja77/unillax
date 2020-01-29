@@ -83,6 +83,58 @@
 				}
 			}
 		}
+
+		for (var i = 0; i < unillaxElements.length; i++) {
+
+			// Sets the current element as a variable
+			var element = unillaxElements[i];
+
+			// Resets element
+			element.style.transform = "translate(" + 0 + "px, " + 0 + "px)";
+
+			// Sets a variable for the element's position from top relative to the viewport
+			var elementOffsetLeft = element.getBoundingClientRect().left;
+			var elementOffsetTop = element.getBoundingClientRect().top;
+
+
+			// Sets a variable for the element's dimensions
+			var elementWidth = element.offsetWidth;
+			var elementHeight = element.offsetHeight;
+
+			// Assign `data-unillax-position-x` to a variable
+			var dataUnillaxPositionX = element.getAttribute("data-unillax-position-x");
+			if (dataUnillaxPositionX) {
+				var unillaxPositionX = dataUnillaxPositionX;
+			} else {
+				var unillaxPositionX = 0;
+			}
+
+			// Assign `data-unillax-position-y` to a variable
+			var dataUnillaxPositionY = element.getAttribute("data-unillax-position-y");
+			if (dataUnillaxPositionY) {
+				var unillaxPositionY = dataUnillaxPositionX;
+			} else {
+				var unillaxPositionY = 0;
+			}
+
+			// Assign `data-unillax-depth` to a variable
+			var dataUnillaxDepth = element.getAttribute("data-unillax-depth");
+			if (dataUnillaxDepth) {
+				var depth = dataUnillaxDepth;
+			} else {
+				var depth = 2;
+			}
+
+			// Calculates final transformations
+			var transformX = (-elementOffsetLeft / depth) + (unillaxPositionX / 2) * -(windowWidth - elementWidth);
+			var transformY = (-elementOffsetTop / depth) + (unillaxPositionY / 2) * (windowHeight - elementHeight);
+
+			// Transforms Element
+			element.style.transform = "translate(" + transformX + "px, " + transformY + "px)";
+
+
+		}
+
 	}
 
 	// Updates the variables that directly access the DOM fist
